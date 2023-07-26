@@ -19,6 +19,10 @@ class UserDAO:
     def get_all_users(self):
         return User.query.all()
 
+    def get_user_country(self, country):
+        users = User.query.all()
+        return users.join(User.query.get(country))
+
     def update_user(self, user, user_dto):
         User.name = user_dto.name
         User.biopic = user_dto.biopic
