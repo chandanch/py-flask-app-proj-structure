@@ -16,8 +16,7 @@ class UserController:
     def get_all_users(self):
         users = self.userService.get_all_users()
 
-        user_serializer = UserSerializer()
-        serialized_users = [user_serializer.serialize(user) for user in users]
+        serialized_users = [UserSerializer.serialize(user) for user in users]
 
         user_schema = UserSchema(many=True)
         validated_users, errors = user_schema.load(serialized_users)
